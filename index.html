@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yizhou Chen — PKU CS</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pku: #8b1a2b;
+  --pku-deep: #6d1422;
+  --pku-light: #a82040;
+  --ink: #1c1c28;
+  --body: #3a3a4a;
+  --muted: #7c7c8e;
+  --chalk: #faf9f7;
+  --warm-bg: #f4f2ee;
+  --card: #ffffff;
+  --border: #e8e5df;
+  --gold: #c9962b;
+  --tag-bg: #fef6e8;
+  --tag-text: #9a7318;
+  --tag-a-bg: #fdeeed;
+  --tag-a-text: #8b1a2b;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 24px rgba(0,0,0,0.06);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.08);
+  --radius: 8px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  background: var(--chalk);
+  color: var(--body);
+  line-height: 1.75;
+  font-size: 15px;
+}
+
+/* ─── TOPBAR ─── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(250,249,247,0.88);
+  backdrop-filter: blur(24px) saturate(1.4);
+  border-bottom: 1px solid transparent;
+  transition: all 0.35s;
+}
+.topbar.scrolled { border-bottom-color: var(--border); }
+.topbar-inner {
+  max-width: 1080px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 32px;
+}
+.topbar-name {
+  font-family: 'Crimson Pro', serif;
+  font-size: 20px; font-weight: 600;
+  color: var(--ink); text-decoration: none;
+  letter-spacing: -0.3px;
+}
+.topbar-name span { color: var(--pku); }
+.topbar-links { display: flex; gap: 32px; list-style: none; }
+.topbar-links a {
+  text-decoration: none; color: var(--muted);
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0.8px; text-transform: uppercase;
+  transition: color 0.25s;
+}
+.topbar-links a:hover { color: var(--pku); }
+
+/* ─── HERO ─── */
+.hero {
+  padding: 140px 32px 80px;
+  max-width: 1080px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 64px; align-items: start;
+}
+.hero-text { animation: fadeIn 0.8s ease-out; }
+.hero-greeting {
+  font-size: 13px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--pku);
+  font-weight: 600; margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'Crimson Pro', serif;
+  font-size: 52px; font-weight: 600;
+  color: var(--ink); line-height: 1.15;
+  letter-spacing: -1px; margin-bottom: 8px;
+}
+.hero h1 em {
+  font-style: italic; font-weight: 300;
+  color: var(--pku);
+}
+.hero-subtitle {
+  font-size: 17px; color: var(--muted);
+  font-weight: 400; margin-bottom: 24px;
+  line-height: 1.6;
+}
+.hero-affiliation {
+  font-size: 14px; color: var(--body);
+  padding: 16px 0; border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px; line-height: 1.9;
+}
+.hero-affiliation strong { color: var(--ink); font-weight: 600; }
+.hero-links {
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.hero-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 18px; border-radius: 6px;
+  font-size: 13px; font-weight: 500;
+  text-decoration: none; transition: all 0.25s;
+  border: 1px solid var(--border); color: var(--body);
+  background: var(--card);
+}
+.hero-link:hover {
+  border-color: var(--pku); color: var(--pku);
+  box-shadow: var(--shadow-sm);
+}
+.hero-link svg { width: 15px; height: 15px; }
+.hero-photo {
+  animation: fadeIn 0.8s ease-out 0.15s both;
+}
+.hero-photo img, .hero-photo .photo-placeholder {
+  width: 100%; aspect-ratio: 3/4;
+  border-radius: var(--radius);
+  object-fit: cover;
+  box-shadow: var(--shadow-md);
+}
+.photo-placeholder {
+  background: linear-gradient(145deg, var(--warm-bg), #e6e0d6);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-size: 13px; letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 500;
+  position: relative; overflow: hidden;
+}
+.photo-placeholder::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 4px; background: var(--pku);
+}
+
+/* ─── SECTION ─── */
+.section {
+  max-width: 1080px; margin: 0 auto;
+  padding: 72px 32px;
+}
+.section-header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 40px;
+}
+.section-icon {
+  width: 40px; height: 40px;
+  background: var(--tag-a-bg);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--pku); flex-shrink: 0;
+}
+.section-title {
+  font-family: 'Crimson Pro', serif;
+  font-size: 30px; font-weight: 600;
+  color: var(--ink); letter-spacing: -0.3px;
+}
+
+/* ─── RESEARCH INTERESTS ─── */
+.interests {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 0;
+}
+.interest-tag {
+  padding: 8px 20px; border-radius: 100px;
+  font-size: 13px; font-weight: 500;
+  background: var(--warm-bg); color: var(--body);
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.interest-tag:hover {
+  border-color: var(--pku); color: var(--pku);
+  background: var(--tag-a-bg);
+}
+
+/* ─── EDUCATION ─── */
+.edu-paragraph {
+  font-size: 15px; color: var(--body);
+  line-height: 1.85; max-width: 780px;
+}
+.edu-paragraph p {
+  margin-bottom: 20px;
+}
+.edu-paragraph p:last-child { margin-bottom: 0; }
+.edu-paragraph strong { color: var(--ink); font-weight: 600; }
+.edu-paragraph em { font-style: normal; color: var(--pku); font-weight: 500; }
+.edu-current {
+  display: inline-block; padding: 2px 10px;
+  background: var(--tag-a-bg); color: var(--pku);
+  border-radius: 4px; font-size: 11px;
+  font-weight: 600; letter-spacing: 0.5px;
+  vertical-align: middle;
+}
+
+/* ─── PUBLICATIONS ─── */
+.pub-summary {
+  background: var(--warm-bg);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 36px;
+  display: flex; gap: 40px; flex-wrap: wrap;
+  border: 1px solid var(--border);
+}
+.pub-stat-num {
+  font-family: 'Crimson Pro', serif;
+  font-size: 36px; font-weight: 600;
+  color: var(--pku); line-height: 1;
+}
+.pub-stat-label {
+  font-size: 12px; color: var(--muted);
+  margin-top: 4px; letter-spacing: 0.3px;
+}
+
+.pub-group-title {
+  font-size: 14px; font-weight: 600;
+  color: var(--ink); letter-spacing: 0.5px;
+  margin-bottom: 20px; margin-top: 12px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--pku);
+  display: inline-block;
+}
+
+.pub-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
+
+.pub-item {
+  padding: 20px 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.3s;
+  position: relative;
+  padding-left: 28px;
+}
+.pub-item::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; background: var(--border);
+  border-radius: 3px 0 0 3px;
+  transition: background 0.3s;
+}
+.pub-item:hover {
+  box-shadow: var(--shadow-md);
+  border-color: rgba(139,26,43,0.15);
+}
+.pub-item:hover::before { background: var(--pku); }
+
+.pub-title-text {
+  font-size: 15px; font-weight: 500;
+  color: var(--ink); line-height: 1.55;
+  margin-bottom: 8px;
+}
+.pub-venue {
+  font-size: 13px; color: var(--muted);
+  font-style: italic;
+}
+.pub-tags { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+.pub-tag {
+  padding: 2px 10px; border-radius: 4px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.pub-tag.ccf-a { background: var(--tag-a-bg); color: var(--tag-a-text); }
+.pub-tag.ccf-b { background: var(--tag-bg); color: var(--tag-text); }
+.pub-tag.first { background: #eef6ee; color: #2d7a2d; }
+
+/* ─── AWARDS ─── */
+.award-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px;
+}
+.award-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 22px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.25s;
+}
+.award-item:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: rgba(139,26,43,0.15);
+}
+.award-name {
+  font-size: 14px; font-weight: 500; color: var(--ink);
+}
+.award-name .highlight { color: var(--pku); font-weight: 600; }
+.award-year {
+  font-size: 12px; color: var(--muted);
+  white-space: nowrap; margin-left: 12px;
+}
+
+/* ─── SERVICE ─── */
+.service-list {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 12px;
+}
+.service-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 20px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px; color: var(--body);
+  transition: all 0.25s;
+}
+.service-item:hover { box-shadow: var(--shadow-sm); }
+.service-rank {
+  padding: 3px 10px; border-radius: 4px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.3px; flex-shrink: 0;
+}
+.service-rank.a { background: var(--tag-a-bg); color: var(--tag-a-text); }
+.service-rank.b { background: var(--tag-bg); color: var(--tag-text); }
+
+/* ─── EXPERIENCE ─── */
+.exp-item {
+  padding: 28px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.exp-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; margin-bottom: 16px;
+  flex-wrap: wrap; gap: 8px;
+}
+.exp-company {
+  font-size: 18px; font-weight: 600; color: var(--ink);
+}
+.exp-role { font-size: 14px; color: var(--muted); margin-top: 2px; }
+.exp-time {
+  font-size: 13px; color: var(--muted); font-weight: 500;
+  white-space: nowrap;
+}
+.exp-details { list-style: none; }
+.exp-details li {
+  font-size: 14px; color: var(--body);
+  padding: 6px 0; padding-left: 18px;
+  position: relative; line-height: 1.7;
+}
+.exp-details li::before {
+  content: '';
+  position: absolute; left: 0; top: 14px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--pku); opacity: 0.4;
+}
+
+/* ─── CONTACT ─── */
+.contact-section {
+  background: var(--ink);
+  color: var(--chalk);
+  margin-top: 40px;
+}
+.contact-section .section-title { color: var(--chalk); }
+.contact-section .section-icon {
+  background: rgba(139,26,43,0.2);
+}
+.contact-grid {
+  display: flex; gap: 24px; flex-wrap: wrap;
+}
+.contact-card {
+  display: flex; align-items: center; gap: 14px;
+  padding: 20px 28px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  text-decoration: none; color: rgba(250,249,247,0.75);
+  font-size: 14px; transition: all 0.3s;
+}
+.contact-card:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(139,26,43,0.5);
+  color: var(--chalk);
+  transform: translateY(-2px);
+}
+.contact-card svg { flex-shrink: 0; opacity: 0.6; }
+.contact-card:hover svg { opacity: 1; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  text-align: center; padding: 28px 32px;
+  font-size: 12px; color: rgba(250,249,247,0.25);
+  letter-spacing: 0.5px;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.vis { opacity: 1; transform: translateY(0); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 32px; padding-top: 110px;
+  }
+  .hero-photo { max-width: 200px; order: -1; }
+  .hero h1 { font-size: 36px; }
+  .section { padding: 48px 20px; }
+  .topbar-inner { padding: 12px 20px; }
+  .topbar-links { gap: 18px; }
+  .topbar-links a { font-size: 11px; }
+  .pub-summary { gap: 24px; }
+  .award-grid { grid-template-columns: 1fr; }
+  .service-list { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <a href="#" class="topbar-name">Yizhou <span>Chen</span></a>
+    <ul class="topbar-links">
+      <li><a href="#education">Education</a></li>
+      <li><a href="#publications">Papers</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-text">
+    <p class="hero-greeting">Peking University · School of Computer Science</p>
+    <h1>Yizhou <em>Chen</em></h1>
+    <p class="hero-subtitle">Ph.D. Candidate in Computer Science, Peking University</p>
+    <div class="hero-affiliation">
+      <strong>Advisor:</strong> Prof. Dan Hao (IEEE Fellow, Cheung Kong Scholar)<br>
+      <strong>Research:</strong> Software Engineering, Blockchain Security, AI, Formal Verification
+    </div>
+    <div class="hero-links">
+      <a id="hero-email-link" href="#" class="hero-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Email
+      </a>
+      <a href="#" class="hero-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        Google Scholar
+      </a>
+      <a href="#" class="hero-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <div class="photo-placeholder">YOUR PHOTO</div>
+    <!-- Replace with: <img src="photo.jpg" alt="Yizhou Chen"> -->
+  </div>
+</header>
+
+<!-- RESEARCH INTERESTS -->
+<section class="section" style="padding-top:0">
+  <div class="section-header reveal">
+    <div class="section-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    </div>
+    <h2 class="section-title">Research Interests</h2>
+  </div>
+  <div class="interests reveal">
+    <span class="interest-tag">Software Engineering</span>
+    <span class="interest-tag">Blockchain Security</span>
+    <span class="interest-tag">Smart Contract Vulnerability Detection</span>
+    <span class="interest-tag">Artificial Intelligence</span>
+    <span class="interest-tag">Formal Verification</span>
+    <span class="interest-tag">Large Language Models</span>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education" style="background:var(--warm-bg); max-width:100%; padding-left:0; padding-right:0;">
+  <div style="max-width:1080px; margin:0 auto; padding:0 32px;">
+    <div class="section-header reveal">
+      <div class="section-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m2 7 10-5 10 5-10 5Z"/><path d="M6 12v5c0 0 3 3 6 3s6-3 6-3v-5"/></svg>
+      </div>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="edu-paragraph reveal">
+      <p>
+        I am currently a <strong>Ph.D. candidate</strong> at the <em>School of Computer Science, Peking University</em> (since September 2023), specializing in Computer Software and Theory. I am fortunate to be advised by <strong>Prof. Dan Hao</strong>, an IEEE Fellow and Cheung Kong Scholar. My doctoral research focuses on software engineering, blockchain security, artificial intelligence, and formal verification.
+      </p>
+      <p>
+        Prior to joining Peking University, I received my <strong>Master's degree</strong> in Electronic Information (Software Engineering) from the <em>School of Computer Science, Wuhan University</em> (2020–2022), where I was supervised by <strong>Prof. Jin Liu</strong>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="section" id="publications">
+  <div class="section-header reveal">
+    <div class="section-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg>
+    </div>
+    <h2 class="section-title">Selected Publications</h2>
+  </div>
+
+  <div class="pub-summary reveal">
+    <div>
+      <div class="pub-stat-num">14</div>
+      <div class="pub-stat-label">CCF-A Papers</div>
+    </div>
+    <div>
+      <div class="pub-stat-num">2</div>
+      <div class="pub-stat-label">CCF-B Papers</div>
+    </div>
+    <div>
+      <div class="pub-stat-num">4</div>
+      <div class="pub-stat-label">First-Author CCF-A</div>
+    </div>
+  </div>
+
+  <div class="pub-list">
+    <div class="pub-item reveal">
+      <div class="pub-title-text">Improving Smart Contract Security with Contrastive Learning-based Vulnerability Detection</div>
+      <div class="pub-venue">IEEE/ACM 46th International Conference on Software Engineering (ICSE), 2024</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><span class="pub-tag first">1st Author</span></div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-title-text">Gpass: A Goal-Adaptive Neural Theorem Prover Based on Coq for Automated Formal Verification</div>
+      <div class="pub-venue">IEEE/ACM 47th International Conference on Software Engineering (ICSE), 2025</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><span class="pub-tag first">1st Author</span></div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-title-text">From Cryptic to Clear — Training on LLM Explanations to Detect Smart Contract Vulnerabilities</div>
+      <div class="pub-venue">ACM Transactions on Software Engineering and Methodology (TOSEM), 2025</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><span class="pub-tag first">1st Author</span></div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-title-text">Improving Smart Contract Vulnerability Detection with Correlation-Driven Semi-Supervised Learning</div>
+      <div class="pub-venue">IEEE Transactions on Software Engineering (TSE), 2025</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><span class="pub-tag first">1st Author</span></div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-title-text">Spotting Code Mutation for Predictive Mutation Testing</div>
+      <div class="pub-venue">39th IEEE/ACM International Conference on Automated Software Engineering (ASE), 2024</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-title-text">Mutual Learning-based Framework for Enhancing Robustness of Code Models via Adversarial Training</div>
+      <div class="pub-venue">39th IEEE/ACM International Conference on Automated Software Engineering (ASE), 2024</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-title-text">A Vulnerability Detection Framework by Focusing on Critical Execution Paths</div>
+      <div class="pub-venue">Information and Software Technology, 2024</div>
+      <div class="pub-tags"><span class="pub-tag ccf-b">CCF-B</span></div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-title-text">A Vulnerability Detection Framework with Enhanced Graph Feature Learning</div>
+      <div class="pub-venue">Journal of Systems and Software, 2024</div>
+      <div class="pub-tags"><span class="pub-tag ccf-b">CCF-B</span></div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-title-text">A Comparative Study of Rule-based and Learning-based Mutation Techniques</div>
+      <div class="pub-venue">Journal of Software (Chinese), 2024</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-title-text">Do Advanced Language Models Eliminate the Need for Prompt Engineering in Software Engineering?</div>
+      <div class="pub-venue">ACM TOSEM, 2024</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-title-text">Grammar-based Code Representation: Is It a Worthy Pursuit for LLMs?</div>
+      <div class="pub-venue">Findings of ACL, 2025</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-title-text">Commit Artifact Preserving Build Prediction</div>
+      <div class="pub-venue">33rd ACM SIGSOFT ISSTA, 2024</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-title-text">Directional Diffusion-style Code Editing Pre-training</div>
+      <div class="pub-venue">IEEE TSE, 2025</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-title-text">Bipartite-grammar Aware Pretraining for XML-SQL Code Updating</div>
+      <div class="pub-venue">ACM TOSEM, 2025</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-title-text">Condor: A Code Discriminator Integrating General Semantics with Code Details</div>
+      <div class="pub-venue">IEEE TSE, 2025</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+    </div>
+    <div class="pub-item reveal">
+      <div class="pub-title-text">Beyond the Sum of Parts: Leveraging Entanglement for Bug Inducing Commit Localization</div>
+      <div class="pub-venue">IEEE TSE, 2025</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="section" id="awards" style="background:var(--warm-bg); max-width:100%; padding-left:0; padding-right:0;">
+  <div style="max-width:1080px; margin:0 auto; padding:0 32px;">
+    <div class="section-header reveal">
+      <div class="section-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 7 7 7 7"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C17 4 17 7 17 7"/><path d="M4 22h16"/><path d="M10 22V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v14"/></svg>
+      </div>
+      <h2 class="section-title">Awards & Honors</h2>
+    </div>
+    <div class="award-grid">
+      <div class="award-item reveal">
+        <div class="award-name"><span class="highlight">China National Scholarship</span> · PKU</div>
+        <div class="award-year">2024–2025</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-name"><span class="highlight">Academic Innovation Award</span> · PKU</div>
+        <div class="award-year">2024–2025</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-name"><span class="highlight">Liao Kaiyuan Scholarship</span> · PKU</div>
+        <div class="award-year">2023–2024</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-name">Merit Student Award · PKU</div>
+        <div class="award-year">2024–2025</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-name">Merit Student Award · PKU</div>
+        <div class="award-year">2023–2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACADEMIC SERVICE -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    </div>
+    <h2 class="section-title">Academic Service</h2>
+  </div>
+  <p class="reveal" style="color:var(--muted); margin-bottom:20px; font-size:14px;">Reviewer for top-tier journals in Software Engineering, Security, and AI:</p>
+  <div class="service-list">
+    <div class="service-item reveal">
+      <span class="service-rank a">CCF-A</span>
+      IEEE Transactions on Software Engineering
+    </div>
+    <div class="service-item reveal">
+      <span class="service-rank a">CCF-A</span>
+      ACM Trans. on SE and Methodology
+    </div>
+    <div class="service-item reveal">
+      <span class="service-rank a">CCF-A</span>
+      Trans. on Information Forensics & Security
+    </div>
+    <div class="service-item reveal">
+      <span class="service-rank a">CCF-A</span>
+      Trans. on Dependable and Secure Computing
+    </div>
+    <div class="service-item reveal">
+      <span class="service-rank b">CCF-B</span>
+      Software Testing, Verification and Reliability
+    </div>
+    <div class="service-item reveal">
+      <span class="service-rank b">CCF-B</span>
+      Automated Software Engineering Journal
+    </div>
+    <div class="service-item reveal">
+      <span class="service-rank b">CCF-B</span>
+      IEEE Trans. on Neural Networks and Learning Systems
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact" style="max-width:100%; padding-left:0; padding-right:0;">
+  <div style="max-width:1080px; margin:0 auto; padding:0 32px;">
+    <div class="section-header reveal">
+      <div class="section-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-grid reveal">
+      <a class="contact-card" id="email-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <span id="email-text"></span>
+      </a>
+      <a href="tel:15247186399" class="contact-card">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        152-4718-6399
+      </a>
+      <a href="#" class="contact-card">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        Google Scholar
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Yizhou Chen · Peking University · School of Computer Science
+</footer>
+
+<script>
+// Build email dynamically to prevent Cloudflare email obfuscation
+(function() {
+  var u = 'yizhouchen';
+  var d = 'stu.pku.edu.cn';
+  var full = u + String.fromCharCode(64) + d;
+  var el = document.getElementById('email-link');
+  var et = document.getElementById('email-text');
+  if (el) el.href = 'mai' + 'lto:' + full;
+  if (et) et.textContent = full;
+  var hl = document.getElementById('hero-email-link');
+  if (hl) hl.href = 'mai' + 'lto:' + full;
+})();
+
+// Navbar scroll
+var topbar = document.getElementById('topbar');
+window.addEventListener('scroll', function() {
+  topbar.classList.toggle('scrolled', window.scrollY > 30);
+});
+
+// Scroll reveal
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('vis');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+</script>
+
+</body>
+</html>
