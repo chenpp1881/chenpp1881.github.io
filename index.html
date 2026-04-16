@@ -104,6 +104,8 @@ body {
   border-bottom: 1px solid var(--border);
   margin-bottom: 24px; line-height: 1.9;
 }
+.hero-affiliation p { margin-bottom: 12px; }
+.hero-affiliation p:last-child { margin-bottom: 0; }
 .hero-affiliation strong { color: var(--ink); font-weight: 600; }
 .hero-links {
   display: flex; gap: 12px; flex-wrap: wrap;
@@ -428,7 +430,6 @@ footer {
   <div class="topbar-inner">
     <a href="#" class="topbar-name">Yizhou <span>Chen</span></a>
     <ul class="topbar-links">
-      <li><a href="#education">Education</a></li>
       <li><a href="#publications">Papers</a></li>
       <li><a href="#awards">Awards</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -439,12 +440,16 @@ footer {
 <!-- HERO -->
 <header class="hero">
   <div class="hero-text">
-    <p class="hero-greeting">Peking University · School of Computer Science</p>
+    <p class="hero-greeting">Peking University</p>
     <h1>Yizhou <em>Chen</em>(陈逸洲)</h1>
-    <p class="hero-subtitle">Ph.D. Candidate in Computer Science, Peking University</p>
+    <p class="hero-subtitle">Ph.D. Candidate in Computer Science</p>
     <div class="hero-affiliation">
-      <strong>Advisor:</strong> <a href="https://sites.google.com/view/danhao/" target="_blank" style="color:var(--ink);text-decoration:underline;">Prof. Dan Hao</a> <br>
-      <strong>Research:</strong> Software Engineering, Blockchain Security, AI, Formal Verification
+      <p>
+        I am a Ph.D. candidate in Computer Science at the School of Computer Science, Peking University. I am advised by <a href="https://sites.google.com/view/danhao/" target="_blank" style="color:var(--ink);text-decoration:underline;">Prof. Dan Hao</a> and <a href="https://zys-szy.github.io/" target="_blank" style="color:var(--ink);text-decoration:underline;">Prof. Zeyu Sun</a>, with a research focus on software engineering and trustworthy intelligent systems.
+      </p>
+      <p>
+        Before joining Peking University, I received my Master's degree in Electronic Information (Software Engineering) from the School of Computer Science, Wuhan University, under the supervision of Prof. Jin Liu.
+      </p>
     </div>
     <div class="hero-links">
       <a id="hero-email-link" href="#" class="hero-link">
@@ -468,45 +473,27 @@ footer {
 </header>
 
 <!-- RESEARCH INTERESTS -->
-<section class="section" style="padding-top:0">
-  <div class="section-header reveal">
-    <div class="section-icon">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-    </div>
-    <h2 class="section-title">Research Interests</h2>
-  </div>
-  <div class="interests reveal">
-    <span class="interest-tag">Software Engineering</span>
-    <span class="interest-tag">Blockchain Security</span>
-    <span class="interest-tag">Smart Contract Vulnerability Detection</span>
-    <span class="interest-tag">Artificial Intelligence</span>
-    <span class="interest-tag">Formal Verification</span>
-    <span class="interest-tag">Large Language Models</span>
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section class="section" id="education" style="background:var(--warm-bg); max-width:100%; padding-left:0; padding-right:0;">
+<section class="section" style="padding-top:28px; padding-bottom:36px; background:var(--warm-bg); max-width:100%; padding-left:0; padding-right:0;">
   <div style="max-width:1080px; margin:0 auto; padding:0 32px;">
-    <div class="section-header reveal">
+    <div class="section-header reveal" style="margin-bottom:28px;">
       <div class="section-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m2 7 10-5 10 5-10 5Z"/><path d="M6 12v5c0 0 3 3 6 3s6-3 6-3v-5"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
       </div>
-      <h2 class="section-title">Education</h2>
+      <h2 class="section-title">Research Interests</h2>
     </div>
-    <div class="edu-paragraph reveal">
-      <p>
-        I am currently a Ph.D. student at the <em>School of Computer Science, Peking University</em>, specializing in Computer Software and Theory. My advisors are <a href="https://sites.google.com/view/danhao/" target="_blank" style="color:var(--ink);text-decoration:underline;">Prof. Dan Hao</a> and <a href="https://zys-szy.github.io/" target="_blank" style="color:var(--ink);text-decoration:underline;">Zeyu Sun</a>. My doctoral research focuses on software testing, blockchain security, and formal verification.
-      </p>
-      <p>
-        Prior to joining Peking University, I received my <strong>Master's degree</strong> in Electronic Information (Software Engineering) from the <em>School of Computer Science, Wuhan University</em>, where I was supervised by <strong>Prof. Jin Liu</strong>.
-      </p>
+    <div class="interests reveal">
+      <span class="interest-tag">Software Engineering</span>
+      <span class="interest-tag">Blockchain Security</span>
+      <span class="interest-tag">Smart Contract Vulnerability Detection</span>
+      <span class="interest-tag">Artificial Intelligence</span>
+      <span class="interest-tag">Formal Verification</span>
+      <span class="interest-tag">Large Language Models</span>
     </div>
   </div>
 </section>
 
 <!-- PUBLICATIONS -->
-<section class="section" id="publications">
+<section class="section" id="publications" style="padding-top:44px;">
   <div class="section-header reveal">
     <div class="section-icon">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg>
@@ -516,84 +503,84 @@ footer {
 
   <div class="pub-list">
     <div class="pub-item reveal">
-      <div class="pub-title-text">Improving Smart Contract Security with Contrastive Learning-based Vulnerability Detection</div>
+      <div class="pub-title-text"><strong>Improving Smart Contract Security with Contrastive Learning-based Vulnerability Detection</strong><br><strong>Yizhou Chen</strong>, Zeyu Sun, Zhihao Gong, Dan Hao</div>
       <div class="pub-venue">IEEE/ACM 46th International Conference on Software Engineering (ICSE), 2024</div>
-      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><span class="pub-tag first">1st Author</span></div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><a class="pub-tag first" href="https://doi.org/10.1145/3597503.3639173" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">PDF</a><a class="pub-tag first" href="#" onclick="downloadBib('pub1'); return false;" style="text-decoration:none;">Bib</a></div>
     </div>
     <div class="pub-item reveal">
-      <div class="pub-title-text">Gpass: A Goal-Adaptive Neural Theorem Prover Based on Coq for Automated Formal Verification</div>
+      <div class="pub-title-text"><strong>Gpass: A Goal-Adaptive Neural Theorem Prover Based on Coq for Automated Formal Verification</strong><br><strong>Yizhou Chen</strong>, Zeyu Sun, Guoqing Wang, Dan Hao</div>
       <div class="pub-venue">IEEE/ACM 47th International Conference on Software Engineering (ICSE), 2025</div>
-      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><span class="pub-tag first">1st Author</span></div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><a class="pub-tag first" href="https://doi.org/10.1109/ICSE55347.2025.00116" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">PDF</a><a class="pub-tag first" href="#" onclick="downloadBib('pub2'); return false;" style="text-decoration:none;">Bib</a></div>
     </div>
     <div class="pub-item reveal">
-      <div class="pub-title-text">From Cryptic to Clear — Training on LLM Explanations to Detect Smart Contract Vulnerabilities</div>
+      <div class="pub-title-text"><strong>From Cryptic to Clear - Training on LLM Explanations to Detect Smart Contract Vulnerabilities</strong><br><strong>Yizhou Chen</strong>, Zeyu Sun, Guoqing Wang, Qingyuan Liang, Xiao Yu, Dan Hao</div>
       <div class="pub-venue">ACM Transactions on Software Engineering and Methodology (TOSEM), 2025</div>
-      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><span class="pub-tag first">1st Author</span></div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><a class="pub-tag first" href="https://doi.org/10.1145/3765753" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">PDF</a><a class="pub-tag first" href="#" onclick="downloadBib('pub3'); return false;" style="text-decoration:none;">Bib</a></div>
     </div>
     <div class="pub-item reveal">
-      <div class="pub-title-text">Improving Smart Contract Vulnerability Detection with Correlation-Driven Semi-Supervised Learning</div>
+      <div class="pub-title-text"><strong>Improving Smart Contract Vulnerability Detection with Correlation-Driven Semi-Supervised Learning</strong><br><strong>Yizhou Chen</strong>, Zeyu Sun, Guoqing Wang, Dan Hao</div>
       <div class="pub-venue">IEEE Transactions on Software Engineering (TSE), 2025</div>
-      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><span class="pub-tag first">1st Author</span></div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><a class="pub-tag first" href="https://doi.org/10.1109/TSE.2025.3647014" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">PDF</a><a class="pub-tag first" href="#" onclick="downloadBib('pub4'); return false;" style="text-decoration:none;">Bib</a></div>
     </div>
     <div class="pub-item reveal">
-      <div class="pub-title-text">Spotting Code Mutation for Predictive Mutation Testing</div>
+      <div class="pub-title-text"><strong>Spotting Code Mutation for Predictive Mutation Testing</strong><br>Yifan Zhao, <strong>Yizhou Chen</strong>, Zeyu Sun, Qingyuan Liang, Guoqing Wang, Dan Hao</div>
       <div class="pub-venue">39th IEEE/ACM International Conference on Automated Software Engineering (ASE), 2024</div>
-      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><a class="pub-tag first" href="https://doi.org/10.1145/3691620.3695491" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">PDF</a><a class="pub-tag first" href="#" onclick="downloadBib('pub5'); return false;" style="text-decoration:none;">Bib</a></div>
     </div>
     <div class="pub-item reveal">
-      <div class="pub-title-text">Mutual Learning-based Framework for Enhancing Robustness of Code Models via Adversarial Training</div>
+      <div class="pub-title-text"><strong>Mutual Learning-based Framework for Enhancing Robustness of Code Models via Adversarial Training</strong><br>Yangsen Wang, <strong>Yizhou Chen</strong>, Yifan Zhao, Zhihao Gong, Junjie Chen, Dan Hao</div>
       <div class="pub-venue">39th IEEE/ACM International Conference on Automated Software Engineering (ASE), 2024</div>
-      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><a class="pub-tag first" href="https://vmnk-run.github.io/pdfs/ASE24-MARVEL.pdf" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">PDF</a><a class="pub-tag first" href="#" onclick="downloadBib('pub6'); return false;" style="text-decoration:none;">Bib</a></div>
     </div>
     <div class="pub-item reveal">
-      <div class="pub-title-text">A Vulnerability Detection Framework by Focusing on Critical Execution Paths</div>
-      <div class="pub-venue">Information and Software Technology, 2024</div>
-      <div class="pub-tags"><span class="pub-tag ccf-b">CCF-B</span></div>
+      <div class="pub-title-text"><strong>A Vulnerability Detection Framework by Focusing on Critical Execution Paths</strong><br>Jianxin Cheng, <strong>Yizhou Chen</strong>, Yongzhi Cao, Hanpin Wang</div>
+      <div class="pub-venue">Information and Software Technology (IST), 2024</div>
+      <div class="pub-tags"><span class="pub-tag ccf-b">CCF-B</span><a class="pub-tag first" href="https://doi.org/10.1016/j.infsof.2024.107517" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">PDF</a><a class="pub-tag first" href="#" onclick="downloadBib('pub7'); return false;" style="text-decoration:none;">Bib</a></div>
     </div>
     <div class="pub-item reveal">
-      <div class="pub-title-text">A Vulnerability Detection Framework with Enhanced Graph Feature Learning</div>
-      <div class="pub-venue">Journal of Systems and Software, 2024</div>
-      <div class="pub-tags"><span class="pub-tag ccf-b">CCF-B</span></div>
+      <div class="pub-title-text"><strong>A Vulnerability Detection Framework with Enhanced Graph Feature Learning</strong><br>Jianxin Cheng, <strong>Yizhou Chen</strong>, Yongzhi Cao, Hanpin Wang</div>
+      <div class="pub-venue">Journal of Systems and Software (JSS), 2024</div>
+      <div class="pub-tags"><span class="pub-tag ccf-b">CCF-B</span><a class="pub-tag first" href="https://doi.org/10.1016/j.jss.2024.112118" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">PDF</a><a class="pub-tag first" href="#" onclick="downloadBib('pub8'); return false;" style="text-decoration:none;">Bib</a></div>
     </div>
     <div class="pub-item reveal">
-      <div class="pub-title-text">A Comparative Study of Rule-based and Learning-based Mutation Techniques</div>
-      <div class="pub-venue">Journal of Software (Chinese), 2024</div>
-      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+      <div class="pub-title-text"><strong>A Comparative Study of Rule-based and Learning-based Mutation Techniques</strong><br>Zhihao Gong, <strong>Yizhou Chen</strong>, Junjie Chen, Dan Hao</div>
+      <div class="pub-venue">Journal of Software (JOS), 2024</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><a class="pub-tag first" href="https://scholar.google.com/scholar?q=%22A+Comparative+Study+of+Rule-based+and+Learning-based+Mutation+Techniques%22" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">PDF</a><a class="pub-tag first" href="#" onclick="downloadBib('pub9'); return false;" style="text-decoration:none;">Bib</a></div>
     </div>
     <div class="pub-item reveal">
-      <div class="pub-title-text">Do Advanced Language Models Eliminate the Need for Prompt Engineering in Software Engineering?</div>
-      <div class="pub-venue">ACM TOSEM, 2024</div>
-      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+      <div class="pub-title-text"><strong>Do Advanced Language Models Eliminate the Need for Prompt Engineering in Software Engineering?</strong><br>Guoqing Wang, Zeyu Sun, Sixiang Ye, Zhihao Gong, <strong>Yizhou Chen</strong>, Yifan Zhao, Qingyuan Liang, Dan Hao</div>
+      <div class="pub-venue">ACM Transactions on Software Engineering and Methodology (TOSEM), 2024</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><a class="pub-tag first" href="https://arxiv.org/pdf/2411.02093.pdf" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">PDF</a><a class="pub-tag first" href="#" onclick="downloadBib('pub10'); return false;" style="text-decoration:none;">Bib</a></div>
     </div>
     <div class="pub-item reveal">
-      <div class="pub-title-text">Grammar-based Code Representation: Is It a Worthy Pursuit for LLMs?</div>
-      <div class="pub-venue">Findings of ACL, 2025</div>
-      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+      <div class="pub-title-text"><strong>Grammar-based Code Representation: Is It a Worthy Pursuit for LLMs?</strong><br>Qingyuan Liang, Zhao Zhang, Zeyu Sun, Zheng Lin, Qi Luo, Yueyi Xiao, <strong>Yizhou Chen</strong>, Yuqun Zhang, Haotian Zhang, Lu Zhang, Bin Chen, Yingfei Xiong</div>
+      <div class="pub-venue">Findings of the Association for Computational Linguistics: ACL 2025 (Findings of ACL), 2025</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><a class="pub-tag first" href="https://aclanthology.org/2025.findings-acl.807.pdf" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">PDF</a><a class="pub-tag first" href="#" onclick="downloadBib('pub11'); return false;" style="text-decoration:none;">Bib</a></div>
     </div>
     <div class="pub-item reveal">
-      <div class="pub-title-text">Commit Artifact Preserving Build Prediction</div>
-      <div class="pub-venue">33rd ACM SIGSOFT ISSTA, 2024</div>
-      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+      <div class="pub-title-text"><strong>Commit Artifact Preserving Build Prediction</strong><br>Guoqing Wang, Zeyu Sun, <strong>Yizhou Chen</strong>, Yifan Zhao, Qingyuan Liang, Dan Hao</div>
+      <div class="pub-venue">33rd ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA), 2024</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><a class="pub-tag first" href="https://doi.org/10.1145/3650212.3680356" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">PDF</a><a class="pub-tag first" href="#" onclick="downloadBib('pub12'); return false;" style="text-decoration:none;">Bib</a></div>
     </div>
     <div class="pub-item reveal">
-      <div class="pub-title-text">Directional Diffusion-style Code Editing Pre-training</div>
-      <div class="pub-venue">IEEE TSE, 2025</div>
-      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+      <div class="pub-title-text"><strong>Directional Diffusion-style Code Editing Pre-training</strong><br>Qingyuan Liang, Zeyu Sun, Qihao Zhu, Junhao Hu, Yifan Zhao, <strong>Yizhou Chen</strong>, Mingxuan Zhu, Guoqing Wang, Lu Zhang</div>
+      <div class="pub-venue">IEEE Transactions on Software Engineering (TSE), 2025</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><a class="pub-tag first" href="https://arxiv.org/pdf/2501.12079.pdf" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">PDF</a><a class="pub-tag first" href="#" onclick="downloadBib('pub13'); return false;" style="text-decoration:none;">Bib</a></div>
     </div>
     <div class="pub-item reveal">
-      <div class="pub-title-text">Bipartite-grammar Aware Pretraining for XML-SQL Code Updating</div>
-      <div class="pub-venue">ACM TOSEM, 2025</div>
-      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+      <div class="pub-title-text"><strong>Bipartite-grammar Aware Pretraining for XML-SQL Code Updating</strong><br>Qingyuan Liang, Zeyu Sun, Yifan Zhao, Zhihao Gong, Guoqing Wang, <strong>Yizhou Chen</strong>, Lu Zhang, Guangtai Liang, Qianxiang Wang</div>
+      <div class="pub-venue">ACM Transactions on Software Engineering and Methodology (TOSEM), 2025</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><a class="pub-tag first" href="https://doi.org/10.1145/3771933" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">PDF</a><a class="pub-tag first" href="#" onclick="downloadBib('pub14'); return false;" style="text-decoration:none;">Bib</a></div>
     </div>
     <div class="pub-item reveal">
-      <div class="pub-title-text">Condor: A Code Discriminator Integrating General Semantics with Code Details</div>
-      <div class="pub-venue">IEEE TSE, 2025</div>
-      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+      <div class="pub-title-text"><strong>Condor: A Code Discriminator Integrating General Semantics with Code Details</strong><br>Qingyuan Liang, Zhao Zhang, Chen Liu, Zeyu Sun, Wenjie Zhang, <strong>Yizhou Chen</strong>, Zixiao Zhao, Qi Luo, Wentao Wang, Yanjie Jiang, Yingfei Xiong, Lu Zhang</div>
+      <div class="pub-venue">IEEE Transactions on Software Engineering (TSE), 2025</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><a class="pub-tag first" href="https://arxiv.org/pdf/2412.17429.pdf" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">PDF</a><a class="pub-tag first" href="#" onclick="downloadBib('pub15'); return false;" style="text-decoration:none;">Bib</a></div>
     </div>
     <div class="pub-item reveal">
-      <div class="pub-title-text">Beyond the Sum of Parts: Leveraging Entanglement for Bug Inducing Commit Localization</div>
-      <div class="pub-venue">IEEE TSE, 2025</div>
-      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span></div>
+      <div class="pub-title-text"><strong>Beyond the Sum of Parts: Leveraging Entanglement for Bug Inducing Commit Localization</strong><br>Guoqing Wang, Zeyu Sun, <strong>Yizhou Chen</strong>, Yifan Zhao, Haiyang Shen, Qingyuan Liang, Dan Hao</div>
+      <div class="pub-venue">IEEE Transactions on Software Engineering (TSE), 2025</div>
+      <div class="pub-tags"><span class="pub-tag ccf-a">CCF-A</span><a class="pub-tag first" href="https://doi.org/10.1109/TSE.2025.3628362" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">PDF</a><a class="pub-tag first" href="#" onclick="downloadBib('pub16'); return false;" style="text-decoration:none;">Bib</a></div>
     </div>
   </div>
 </section>
@@ -696,6 +683,144 @@ footer {
 </footer>
 
 <script>
+var publicationBib = {
+  pub1: `@inproceedings{chen2024improving-smart-contract-security,
+  author = {Yizhou Chen and Zeyu Sun and Zhihao Gong and Dan Hao},
+  title = {Improving Smart Contract Security with Contrastive Learning-based Vulnerability Detection},
+  booktitle = {Proceedings of the IEEE/ACM 46th International Conference on Software Engineering},
+  year = {2024},
+  doi = {10.1145/3597503.3639173},
+  url = {https://doi.org/10.1145/3597503.3639173}
+}`,
+  pub2: `@inproceedings{chen2025gpass,
+  author = {Yizhou Chen and Zeyu Sun and Guoqing Wang and Dan Hao},
+  title = {Gpass: A Goal-Adaptive Neural Theorem Prover Based on Coq for Automated Formal Verification},
+  booktitle = {Proceedings of the IEEE/ACM 47th International Conference on Software Engineering},
+  year = {2025},
+  doi = {10.1109/ICSE55347.2025.00116},
+  url = {https://doi.org/10.1109/ICSE55347.2025.00116}
+}`,
+  pub3: `@article{chen2025from-cryptic-to-clear,
+  author = {Yizhou Chen and Zeyu Sun and Guoqing Wang and Qingyuan Liang and Xiao Yu and Dan Hao},
+  title = {From Cryptic to Clear: Training on LLM Explanations to Detect Smart Contract Vulnerabilities},
+  journal = {ACM Transactions on Software Engineering and Methodology},
+  year = {2025},
+  doi = {10.1145/3765753},
+  url = {https://doi.org/10.1145/3765753}
+}`,
+  pub4: `@article{chen2025correlation-driven-semi-supervised-learning,
+  author = {Yizhou Chen and Zeyu Sun and Guoqing Wang and Dan Hao},
+  title = {Improving Smart Contract Vulnerability Detection with Correlation-Driven Semi-Supervised Learning},
+  journal = {IEEE Transactions on Software Engineering},
+  year = {2025},
+  doi = {10.1109/TSE.2025.3647014},
+  url = {https://doi.org/10.1109/TSE.2025.3647014}
+}`,
+  pub5: `@inproceedings{zhao2024spotting-code-mutation,
+  author = {Yifan Zhao and Yizhou Chen and Zeyu Sun and Qingyuan Liang and Guoqing Wang and Dan Hao},
+  title = {Spotting Code Mutation for Predictive Mutation Testing},
+  booktitle = {Proceedings of the 39th IEEE/ACM International Conference on Automated Software Engineering},
+  year = {2024},
+  doi = {10.1145/3691620.3695491},
+  url = {https://doi.org/10.1145/3691620.3695491}
+}`,
+  pub6: `@inproceedings{wang2024mutual-learning-framework,
+  author = {Yangsen Wang and Yizhou Chen and Yifan Zhao and Zhihao Gong and Junjie Chen and Dan Hao},
+  title = {Mutual Learning-based Framework for Enhancing Robustness of Code Models via Adversarial Training},
+  booktitle = {Proceedings of the 39th IEEE/ACM International Conference on Automated Software Engineering},
+  year = {2024},
+  url = {https://vmnk-run.github.io/pdfs/ASE24-MARVEL.pdf}
+}`,
+  pub7: `@article{cheng2024critical-execution-paths,
+  author = {Jianxin Cheng and Yizhou Chen and Yongzhi Cao and Hanpin Wang},
+  title = {A Vulnerability Detection Framework by Focusing on Critical Execution Paths},
+  journal = {Information and Software Technology},
+  year = {2024},
+  doi = {10.1016/j.infsof.2024.107517},
+  url = {https://doi.org/10.1016/j.infsof.2024.107517}
+}`,
+  pub8: `@article{cheng2024enhanced-graph-feature-learning,
+  author = {Jianxin Cheng and Yizhou Chen and Yongzhi Cao and Hanpin Wang},
+  title = {A Vulnerability Detection Framework with Enhanced Graph Feature Learning},
+  journal = {Journal of Systems and Software},
+  year = {2024},
+  doi = {10.1016/j.jss.2024.112118},
+  url = {https://doi.org/10.1016/j.jss.2024.112118}
+}`,
+  pub9: `@article{gong2024comparative-mutation-techniques,
+  author = {Zhihao Gong and Yizhou Chen and Junjie Chen and Dan Hao},
+  title = {A Comparative Study of Rule-based and Learning-based Mutation Techniques},
+  journal = {Journal of Software},
+  year = {2024}
+}`,
+  pub10: `@article{wang2024prompt-engineering-software-engineering,
+  author = {Guoqing Wang and Zeyu Sun and Sixiang Ye and Zhihao Gong and Yizhou Chen and Yifan Zhao and Qingyuan Liang and Dan Hao},
+  title = {Do Advanced Language Models Eliminate the Need for Prompt Engineering in Software Engineering?},
+  journal = {ACM Transactions on Software Engineering and Methodology},
+  year = {2024},
+  url = {https://arxiv.org/abs/2411.02093}
+}`,
+  pub11: `@inproceedings{liang2025grammar-based-code-representation,
+  author = {Qingyuan Liang and Zhao Zhang and Zeyu Sun and Zheng Lin and Qi Luo and Yueyi Xiao and Yizhou Chen and Yuqun Zhang and Haotian Zhang and Lu Zhang and Bin Chen and Yingfei Xiong},
+  title = {Grammar-based Code Representation: Is It a Worthy Pursuit for LLMs?},
+  booktitle = {Findings of the Association for Computational Linguistics: ACL 2025},
+  year = {2025},
+  url = {https://aclanthology.org/2025.findings-acl.807/}
+}`,
+  pub12: `@inproceedings{wang2024commit-artifact-preserving-build-prediction,
+  author = {Guoqing Wang and Zeyu Sun and Yizhou Chen and Yifan Zhao and Qingyuan Liang and Dan Hao},
+  title = {Commit Artifact Preserving Build Prediction},
+  booktitle = {Proceedings of the 33rd ACM SIGSOFT International Symposium on Software Testing and Analysis},
+  year = {2024},
+  doi = {10.1145/3650212.3680356},
+  url = {https://doi.org/10.1145/3650212.3680356}
+}`,
+  pub13: `@article{liang2025directional-diffusion-style-code-editing,
+  author = {Qingyuan Liang and Zeyu Sun and Qihao Zhu and Junhao Hu and Yifan Zhao and Yizhou Chen and Mingxuan Zhu and Guoqing Wang and Lu Zhang},
+  title = {Directional Diffusion-style Code Editing Pre-training},
+  journal = {IEEE Transactions on Software Engineering},
+  year = {2025},
+  url = {https://arxiv.org/abs/2501.12079}
+}`,
+  pub14: `@article{liang2025bipartite-grammar-aware-pretraining,
+  author = {Qingyuan Liang and Zeyu Sun and Yifan Zhao and Zhihao Gong and Guoqing Wang and Yizhou Chen and Lu Zhang and Guangtai Liang and Qianxiang Wang},
+  title = {Bipartite-grammar Aware Pretraining for XML-SQL Code Updating},
+  journal = {ACM Transactions on Software Engineering and Methodology},
+  year = {2025},
+  doi = {10.1145/3771933},
+  url = {https://doi.org/10.1145/3771933}
+}`,
+  pub15: `@article{liang2025condor,
+  author = {Qingyuan Liang and Zhao Zhang and Chen Liu and Zeyu Sun and Wenjie Zhang and Yizhou Chen and Zixiao Zhao and Qi Luo and Wentao Wang and Yanjie Jiang and Yingfei Xiong and Lu Zhang},
+  title = {Condor: A Code Discriminator Integrating General Semantics with Code Details},
+  journal = {IEEE Transactions on Software Engineering},
+  year = {2025},
+  url = {https://arxiv.org/abs/2412.17429}
+}`,
+  pub16: `@article{wang2025beyond-the-sum-of-parts,
+  author = {Guoqing Wang and Zeyu Sun and Yizhou Chen and Yifan Zhao and Haiyang Shen and Qingyuan Liang and Dan Hao},
+  title = {Beyond the Sum of Parts: Leveraging Entanglement for Bug Inducing Commit Localization},
+  journal = {IEEE Transactions on Software Engineering},
+  year = {2025},
+  doi = {10.1109/TSE.2025.3628362},
+  url = {https://doi.org/10.1109/TSE.2025.3628362}
+}`
+};
+
+function downloadBib(id) {
+  var bib = publicationBib[id];
+  if (!bib) return;
+  var blob = new Blob([bib], { type: 'text/plain;charset=utf-8' });
+  var url = URL.createObjectURL(blob);
+  var link = document.createElement('a');
+  link.href = url;
+  link.download = id + '.bib';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
 // Build email dynamically to prevent Cloudflare email obfuscation
 (function() {
   var u = 'yizhouchen';
